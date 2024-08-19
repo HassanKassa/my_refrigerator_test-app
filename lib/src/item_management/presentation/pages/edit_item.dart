@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ordered_app/src/item_management/riverpods/edit_item_provider.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../category_management/riverpods/items_category_provider.dart';
@@ -13,18 +14,18 @@ import '../../../common/widgets/reactive_text_field_widget.dart';
 import '../../domain/item.dart';
 import '../../../common/components/categories_bar.dart';
 import '../../../common/widgets/procced_button.dart';
-import '../../riverpods/add_item_provider.dart';
 import '../../riverpods/item_form_provider.dart';
 import '../widgets/date_widget.dart';
 import '../widgets/image_picker_widget.dart';
 import '../widgets/drop_down_widget.dart';
 
-class AddItem extends ConsumerWidget {
-  AddItem({super.key});
+class EditItem extends ConsumerWidget {
+  final Item item;
+  EditItem({super.key, required this.item});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final itemForm = ref.watch(itemFormProvider(null));
+    final itemForm = ref.watch(itemFormProvider(item));
 
     return ReactiveForm(
       formGroup: itemForm,
@@ -43,8 +44,7 @@ class AddItem extends ConsumerWidget {
                   return Text('Error: ${snapshot.error}');
                 }
                 return CategoriesBar(
-                  additionaltem: AddCategoryButton(
-                  ),
+                  additionaltem: AddCategoryButton(),
                   categories: snapshot.data?.map((e) => e.name).toList() ?? [],
                 );
               },
@@ -152,7 +152,8 @@ class AddItem extends ConsumerWidget {
                               formGroup.valid && selectedCategory != "All",
                           onTap: () async {
                             await ref
-                                .read(addItemProvider(formGroup).future)
+                                .read(
+                                    editItemProvider((formGroup, item)).future)
                                 .then((value) => Navigator.pop(context));
                           },
                         ),
@@ -164,8 +165,8 @@ class AddItem extends ConsumerWidget {
             ),
           ),
         ],
-        pageSubTitle: 'Add item to your refrigerator',
-        pageMainTitle: 'Add New Item',
+        pageSubTitle: 'Edit item in your refrigerator',
+        pageMainTitle: 'Edit An Item',
         addLayer: SizedBox(),
       ),
     );

@@ -1,24 +1,23 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
-class MyTextField extends StatelessWidget {
+class ReactiveTextFieldWidget extends StatelessWidget {
   final String label;
   final int maxLines;
   final Widget? ctficon;
-  final TextEditingController? controller;
   final double ctfWidth;
-  final String? Function(String?)? validator;
-  final Function(String)? onChanged;
+  final String formControlName;
+  final Function(FormControl<dynamic>)? onChanged;
 
-  const MyTextField({
+  const ReactiveTextFieldWidget({
     super.key,
     required this.label,
     this.maxLines = 1,
     this.ctficon,
-    this.controller,
+    required this.formControlName,
     required this.ctfWidth,
-    this.validator,
     this.onChanged,
   });
 
@@ -28,9 +27,9 @@ class MyTextField extends StatelessWidget {
       width: ctfWidth,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 10),
-        child: TextFormField(
+        child: ReactiveTextField(
+          formControlName: formControlName,
           onChanged: onChanged,
-          controller: controller,
           maxLines: maxLines,
           decoration: InputDecoration(
             filled: true,
@@ -46,7 +45,6 @@ class MyTextField extends StatelessWidget {
               borderRadius: BorderRadius.circular(15.0),
             ),
           ),
-          validator: validator,
         ),
       ),
     );

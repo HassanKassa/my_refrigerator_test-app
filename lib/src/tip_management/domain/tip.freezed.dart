@@ -21,9 +21,9 @@ Tip _$TipFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Tip {
   String? get tipId => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
-  String? get details => throw _privateConstructorUsedError;
-  String? get category => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get details => throw _privateConstructorUsedError;
+  String get category => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $TipCopyWith<$Res> {
   factory $TipCopyWith(Tip value, $Res Function(Tip) then) =
       _$TipCopyWithImpl<$Res, Tip>;
   @useResult
-  $Res call({String? tipId, String? name, String? details, String? category});
+  $Res call({String? tipId, String name, String details, String category});
 }
 
 /// @nodoc
@@ -51,27 +51,27 @@ class _$TipCopyWithImpl<$Res, $Val extends Tip> implements $TipCopyWith<$Res> {
   @override
   $Res call({
     Object? tipId = freezed,
-    Object? name = freezed,
-    Object? details = freezed,
-    Object? category = freezed,
+    Object? name = null,
+    Object? details = null,
+    Object? category = null,
   }) {
     return _then(_value.copyWith(
       tipId: freezed == tipId
           ? _value.tipId
           : tipId // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      details: freezed == details
+              as String,
+      details: null == details
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
-              as String?,
-      category: freezed == category
+              as String,
+      category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -82,7 +82,7 @@ abstract class _$$TipImplCopyWith<$Res> implements $TipCopyWith<$Res> {
       __$$TipImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? tipId, String? name, String? details, String? category});
+  $Res call({String? tipId, String name, String details, String category});
 }
 
 /// @nodoc
@@ -95,27 +95,27 @@ class __$$TipImplCopyWithImpl<$Res> extends _$TipCopyWithImpl<$Res, _$TipImpl>
   @override
   $Res call({
     Object? tipId = freezed,
-    Object? name = freezed,
-    Object? details = freezed,
-    Object? category = freezed,
+    Object? name = null,
+    Object? details = null,
+    Object? category = null,
   }) {
     return _then(_$TipImpl(
       tipId: freezed == tipId
           ? _value.tipId
           : tipId // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      details: freezed == details
+              as String,
+      details: null == details
           ? _value.details
           : details // ignore: cast_nullable_to_non_nullable
-              as String?,
-      category: freezed == category
+              as String,
+      category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -123,7 +123,11 @@ class __$$TipImplCopyWithImpl<$Res> extends _$TipCopyWithImpl<$Res, _$TipImpl>
 /// @nodoc
 @JsonSerializable()
 class _$TipImpl implements _Tip {
-  _$TipImpl({this.tipId, this.name, this.details, this.category});
+  _$TipImpl(
+      {this.tipId,
+      required this.name,
+      required this.details,
+      required this.category});
 
   factory _$TipImpl.fromJson(Map<String, dynamic> json) =>
       _$$TipImplFromJson(json);
@@ -131,11 +135,11 @@ class _$TipImpl implements _Tip {
   @override
   final String? tipId;
   @override
-  final String? name;
+  final String name;
   @override
-  final String? details;
+  final String details;
   @override
-  final String? category;
+  final String category;
 
   @override
   String toString() {
@@ -175,20 +179,20 @@ class _$TipImpl implements _Tip {
 abstract class _Tip implements Tip {
   factory _Tip(
       {final String? tipId,
-      final String? name,
-      final String? details,
-      final String? category}) = _$TipImpl;
+      required final String name,
+      required final String details,
+      required final String category}) = _$TipImpl;
 
   factory _Tip.fromJson(Map<String, dynamic> json) = _$TipImpl.fromJson;
 
   @override
   String? get tipId;
   @override
-  String? get name;
+  String get name;
   @override
-  String? get details;
+  String get details;
   @override
-  String? get category;
+  String get category;
   @override
   @JsonKey(ignore: true)
   _$$TipImplCopyWith<_$TipImpl> get copyWith =>

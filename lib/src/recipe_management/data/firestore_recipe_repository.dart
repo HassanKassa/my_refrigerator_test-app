@@ -6,12 +6,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../riverpod/providers.dart';
+import '../../common/riverpod/providers.dart';
 import '../domain/recipe.dart';
 import 'recipe_repository.dart';
 
 final firestoreRecipeRepositoryProvider = Provider((ref) {
-  final image = ref.watch(imageProvider);
+  final image = ref.watch(imageRecipeProvider);
   return FirestoreRecipeRepository(image);
 });
 

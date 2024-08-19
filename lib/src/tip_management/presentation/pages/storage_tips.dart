@@ -1,13 +1,15 @@
-// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../category_management/riverpods/items_category_provider.dart';
+import '../../../category_management/riverpods/stream_categories_provider.dart';
+import '../../../category_management/riverpods/tips_category_provider.dart';
 import '../../../common/components/base_scaffold.dart';
 import '../../../common/components/categories_bar.dart';
 import '../../../common/components/searching_and_filtering.dart';
 import '../../../common/widgets/category_button.dart';
 import '../../../common/widgets/right_floating_button.dart';
-import '../../../riverpod/providers.dart';
+import '../../riverpods/stream_tips_provider.dart';
 import 'add_tips.dart';
 
 class StorageTips extends ConsumerWidget {
@@ -23,8 +25,8 @@ class StorageTips extends ConsumerWidget {
       pageMainTitle: 'Storage Tips',
       pageSubTitle: 'List of Storage Tips',
       myelements: [
-        SearchingAndFiltering(),
-        SizedBox(height: 10),
+        const SearchingAndFiltering(),
+        const SizedBox(height: 10),
         categoriesAsyncValue.when(
           data: (categories) {
             return CategoriesBar(
@@ -43,7 +45,7 @@ class StorageTips extends ConsumerWidget {
                   categories?.map((category) => category.name).toList() ?? [],
             );
           },
-          loading: () => Center(child: CircularProgressIndicator()),
+          loading: () => const Center(child: CircularProgressIndicator()),
           error: (error, stackTrace) => Center(child: Text('Error: $error')),
         ),
         Expanded(
@@ -58,12 +60,12 @@ class StorageTips extends ConsumerWidget {
                           child: ListTile(
                             tileColor: Colors.white,
                             title: Text(
-                              '${tip.name}',
-                              style: TextStyle(
+                              tip.name,
+                              style: const TextStyle(
                                   fontWeight: FontWeight.w500, fontSize: 16),
                             ),
-                            subtitle: Text('${tip.details}',
-                                style: TextStyle(
+                            subtitle: Text(tip.details,
+                                style: const TextStyle(
                                     fontWeight: FontWeight.w400,
                                     fontSize: 12,
                                     color: Color(0xff575E71))),
@@ -75,11 +77,11 @@ class StorageTips extends ConsumerWidget {
               ),
             );
           },
-          loading: () => Center(child: CircularProgressIndicator()),
+          loading: () => const Center(child: CircularProgressIndicator()),
           error: (error, stackTrace) => Center(child: Text('Error: $error')),
         ))
       ],
-      addLayer: RightFloatingButton(
+      addLayer: const RightFloatingButton(
         theDestenation: AddTips(),
         theIcon: Icons.tips_and_updates_outlined,
       ),

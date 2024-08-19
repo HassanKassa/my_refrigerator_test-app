@@ -2,13 +2,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ordered_app/src/recipe_management/presentation/pages/add_new_recipe.dart';
+import '../../../category_management/riverpods/items_category_provider.dart';
+import '../../../category_management/riverpods/recipes_category_provider.dart';
+import '../../../category_management/riverpods/stream_categories_provider.dart';
 import '../../../common/components/base_scaffold.dart';
 import '../../../common/components/categories_bar.dart';
 import '../../../common/components/searching_and_filtering.dart';
 import '../../../common/widgets/category_button.dart';
-import '../../../common/widgets/recipe_card.dart';
+import '../widgets/recipe_card.dart';
 import '../../../common/widgets/right_floating_button.dart';
-import '../../../riverpod/providers.dart';
+import '../../riverpods/stream_recipe_provider.dart';
 
 class Recipes extends ConsumerWidget {
   const Recipes({super.key});

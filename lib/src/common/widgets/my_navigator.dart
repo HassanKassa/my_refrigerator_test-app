@@ -4,7 +4,6 @@ import 'package:ordered_app/src/unrequired_my_profile.dart';
 import '../../recipe_management/presentation/pages/recipes.dart';
 import '../../tip_management/presentation/pages/storage_tips.dart';
 
-
 class MyNavigator extends StatelessWidget {
   final int currentIndex;
 
@@ -15,20 +14,22 @@ class MyNavigator extends StatelessWidget {
 
     switch (index) {
       case 0:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const MyRefrigerator()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const MyRefrigerator()));
         break;
       case 1:
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => const Recipes()));
         break;
       case 2:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const StorageTips()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const StorageTips()));
         break;
       case 3:
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const UnrequiredMyProfile()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const UnrequiredMyProfile()));
         break;
     }
   }

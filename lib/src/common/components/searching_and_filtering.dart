@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ordered_app/src/common/widgets/filter_button.dart';
 import 'package:ordered_app/src/common/widgets/textfield.dart';
 
-import '../../riverpod/providers.dart';
+import '../riverpod/providers.dart';
 
 class SearchingAndFiltering extends StatelessWidget {
   const SearchingAndFiltering({super.key});

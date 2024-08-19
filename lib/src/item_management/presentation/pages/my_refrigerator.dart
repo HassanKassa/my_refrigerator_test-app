@@ -2,14 +2,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../riverpod/providers.dart';
+import 'package:ordered_app/src/item_management/presentation/pages/edit_item.dart';
+import '../../../category_management/riverpods/items_category_provider.dart';
+import '../../../category_management/riverpods/stream_categories_provider.dart';
 import '../../data/firestore_item_repository.dart';
 import '../../../common/components/categories_bar.dart';
-import '../../../common/components/item_card.dart';
+import '../widgets/item_card.dart';
 import '../../../common/components/base_scaffold.dart';
 import '../../../common/components/searching_and_filtering.dart';
 import '../../../common/widgets/category_button.dart';
-import '../../../edit_item.dart';
+import '../../riverpods/stream_item_provider.dart';
+
 
 class MyRefrigerator extends ConsumerWidget {
   const MyRefrigerator({super.key});
@@ -73,6 +76,7 @@ class MyRefrigerator extends ConsumerWidget {
                               .difference(DateTime.now())
                               .inDays,
                           quantity: '${item.quantity} $unit',
+                          
                           cardImage: item.photo ?? "assets/images/tomato.jpg",
                         );
                       }) ??

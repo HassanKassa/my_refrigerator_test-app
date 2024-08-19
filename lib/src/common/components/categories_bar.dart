@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../riverpod/providers.dart';
+import '../../category_management/riverpods/items_category_provider.dart';
+import '../../category_management/riverpods/recipes_category_provider.dart';
+import '../../category_management/riverpods/tips_category_provider.dart';
 import '../widgets/category_button.dart';
 
 class CategoriesBar extends StatelessWidget {

@@ -7,10 +7,11 @@ part 'tip.g.dart';
 class Tip with _$Tip {
   factory Tip({
     String? tipId,
-    String? name,
-    String? details,
-    String category,
+    required String name,
+    required String details,
+    required String category,
   }) = _Tip;
 
   factory Tip.fromJson(Map<String, dynamic> json) => _$TipFromJson(json);
 }
+
